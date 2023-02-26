@@ -1,0 +1,10 @@
+.navbar-header{
+    background-color: #0000ff42;
+    position: fixed;
+    height: 100%;
+    width: 7%;
+}
+
+.side-element {
+    margin: 50px 0;
+}

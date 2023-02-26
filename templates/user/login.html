@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'user/css/login.css' %}">
+    <title>Base</title>
+</head>
+<body>
+
+    {% if not user.is_authenticated %}
+
+        {% if form.errors %}
+            <p>{{ form.errors.error }}</p>
+        {% endif %}
+
+        <form action="{% url 'user:login' %}" method="post" class="login-form">
+            <div class="form-fields">
+                {{ form }}
+                {% csrf_token %}
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+    {% else %}
+        <div class="login-form">
+            <h3>You are logged!</h3>
+                <div class="input-login-field">
+                    Username: {{ user.username }}
+                </div>
+                <div class="input-login-field">
+                    Email: {{ user.email }}
+                </div>
+            <a href="{% url 'user:logout' %}" class="logout-btn">Logout</a>
+        </div>
+    {% endif %}
+</body>
+</html>

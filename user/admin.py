@@ -5,20 +5,6 @@ from .models import User
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 
-# class CustomUserAdmin(UserAdmin):
-#     list_display = ('id', 'username', 'email')
-#     fieldsets = (
-#         (None, {'fields': ('username', 'password')}),
-#         (_('Personal info'), {'fields': ('email',)}),
-#         (_('Permissions'), {
-#             'fields': ('is_active', 'is_staff', 'is_superuser'),
-#         }),
-#         # (_('Info'), {'fields': ('status',)}),
-#     )
-#
-#
-# admin.site.register(User, CustomUserAdmin)
-
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
     """ Custom display user fields on admin panel"""
@@ -32,7 +18,7 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ('email', 'phone', 'is_staff', 'is_active',)
 
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'phone', 'is_staff', 'is_active', 'lessons')}),
+        (None, {'fields': ('email', 'password', 'phone', 'is_staff', 'is_active', 'courses', 'themes', 'lessons')}),
     )
     add_fieldsets = (
         (

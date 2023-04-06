@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from .managers import UserAccountManager
-from lesson.models import Lesson
+from study.models import Course, Theme, Lesson
 
 
 class User(AbstractUser, PermissionsMixin):
@@ -12,7 +12,6 @@ class User(AbstractUser, PermissionsMixin):
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ["email"]
     objects = UserAccountManager()
 
     username = None
@@ -50,8 +49,10 @@ class User(AbstractUser, PermissionsMixin):
     created = models.DateTimeField(
         auto_now_add=True,
     )
-    
-    lessons = models.ManyToManyField(Lesson, related_name="lessons", blank=True)
+
+    courses = models.ManyToManyField(Course, related_name="courses", blank=True, default=None)
+    themes = models.ManyToManyField(Theme, related_name="theme", blank=True, default=None)
+    lessons = models.ManyToManyField(Lesson, related_name="lesson", blank=True, default=None)
 
     def __str__(self):
         return self.email

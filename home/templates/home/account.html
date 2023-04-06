@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'study/css/themes.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Study</title>
+</head>
+<body>
+    {% if not user.is_authenticated %}
+        {% include 'home/error_page.html' %}
+    {% else %}
+        {% include 'home/account_navbar.html' %}
+        <div class="content">
+        {% block content %}
+        {% endblock %}
+    {% endif %}
+    </div>
+
+
+</body>
+</html>

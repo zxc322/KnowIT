@@ -1,0 +1,25 @@
+{% extends 'home/account.html' %}
+{% load static %}
+{% block content %}
+    <h2>Test ID: {{ data.test.id }}</h2>
+
+    <form action="{% url 'study:save_test_results' %}" method="POST" id="save_test_results">
+        {% csrf_token %}
+        <input type="hidden" value="{{ data.test.id }}" name="test-id">
+        {% for question in data.questions %}
+                <div class="test-question">{{ question.question }}</div>
+
+                {% for option in question.options %}
+                    <input name="{{ question.question }}" type="radio" value="{{ option }}">{{ option }}
+                {% endfor %}
+
+
+
+        {% endfor %}
+        <button type="submit" id="submit-test-form">Submit</button>
+    </form>
+
+
+
+<script src="{% static 'study/js/send_test_results.js' %}"></script>
+{% endblock %}

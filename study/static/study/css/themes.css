@@ -1,0 +1,16 @@
+.opened-theme, .closed-theme {
+    font-size: 20px;
+    font-weight: 1000;
+}
+
+.closed-theme, .closed-lesson {
+    color: grey;
+}
+
+.opened-theme, .opened-lesson {
+    color: green;
+}
+
+.closed-lesson, .opened-lesson {
+    font-weight: 600
+}

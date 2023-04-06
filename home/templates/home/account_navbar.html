@@ -1,0 +1,13 @@
+<header class="account-navbar-header">
+  <nav class="account-navbar-content">
+
+    <div class="">
+      <a href="{% url 'study:courses' %}">Курси</a>
+    </div>
+
+    User: {{ user.email }}
+     <a href="{% url 'user:logout' %}">Logout</a>
+
+  </nav>
+
+</header>

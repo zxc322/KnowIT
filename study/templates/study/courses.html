@@ -1,0 +1,14 @@
+{% extends 'home/account.html' %}
+
+{% block content %}
+
+    <h2>Wellcome home!</h2>
+
+    {% for course in courses %}
+        <a href="{% url 'study:themes' course.slug %}">
+            {{ course.name }}<br>
+        </a>
+
+    {% endfor %}
+
+{% endblock %}

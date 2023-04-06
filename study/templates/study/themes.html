@@ -1,0 +1,25 @@
+{% extends 'home/account.html' %}
+
+{% block content %}
+
+    <h2>{{ data.course.name }}</h2>
+
+    <div class="themes-navbar">
+        {% for dict in data.themes %}
+            {% if dict.is_open %}
+                <div class="opened-theme">{{ dict.theme.name }}</div>
+            {% else %}
+                <div class="closed-theme">{{ dict.theme.name }}</div>
+            {% endif %}
+
+            {% for lesson in dict.lessons %}
+                {% if lesson.is_open %}
+                    <div class="opened-lesson"> -- {{ lesson.lesson.name }}</div>
+                {% else %}
+                    <div class="closed-lesson"> -- {{ lesson.lesson.name }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
